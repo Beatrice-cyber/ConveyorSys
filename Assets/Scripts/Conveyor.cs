@@ -7,6 +7,7 @@ public class Conveyor : MonoBehaviour
 	//read only properties ( Arrow function that returns transform)
     public Transform StartPoint => startPoint;
     public Transform EndPoint => endPoint;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
