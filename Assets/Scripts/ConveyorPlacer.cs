@@ -8,6 +8,7 @@ public class ConveyorPlacer : MonoBehaviour
 	[SerializeField] private LayerMask groundLayer;
 	[SerializeField] private float SnapThreshold = 1.0f;
 	private GameObject previewConveyor;
+	private bool buildMode = true;
 	private GameObject selectedPrefab;
 	private List<Conveyor> placedConveyors = new List<Conveyor>();
 	// this is to keep track of the what we are snapping so that we can update the chain
@@ -21,11 +22,33 @@ public class ConveyorPlacer : MonoBehaviour
 		//default is long conveyor but this can be changed to other types of conveyor
 		selectedPrefab = conveyorPrefab;
 		previewConveyor = Instantiate(selectedPrefab);
+		// Collider previewCollider =previewConveyor.GetComponent<Collider>();
+		/*if (previewCollider != null)
+	 {
+    	previewCollider.enabled = false;
+ }*/
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
+		// space sets build mode off and went into production mode
+		if (Input.GetKeyDown(KeyCode.Space))
+    {
+        buildMode = false;
+
+        if (previewConveyor != null)
+        {
+            Destroy(previewConveyor);
+        }
+
+        return;
+    }
+
+    if (!buildMode)
+    {
+        return;
+    }
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		// starting pt, store result, how long can ray hit, ONLY hit layers in groundlayer

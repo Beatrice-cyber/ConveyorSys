@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dc79dc2a9814ec5a42ffe0d4310c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProductMover
+  speed: 2
+  heightOffset: 0.1
 --- !u!1001 &3379206878572581319
 PrefabInstance:
   m_ObjectHideFlags: 0
